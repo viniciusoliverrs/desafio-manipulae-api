@@ -2,14 +2,16 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using DesafioManipulae.Domain.Indentity;
+using DesafioManipulae.Domain;
 
 namespace DesafioManipulae.Repository
 {
     public class DesafioManipulaeContext : IdentityDbContext<User, Role, int,
-                                                IdentityUserClaim<int>, UserRole, IdentityUserLogin<int>,
-                                                IdentityRoleClaim<int>, IdentityUserToken<int>>
+                                           IdentityUserClaim<int>, UserRole, IdentityUserLogin<int>,
+                                           IdentityRoleClaim<int>, IdentityUserToken<int>>
     {
         public DesafioManipulaeContext(DbContextOptions<DesafioManipulaeContext> options) : base(options) { }
+        public DbSet<VideoDetalhe> VideosDetalhes {get;set;}
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

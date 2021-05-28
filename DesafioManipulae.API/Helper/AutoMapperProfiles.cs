@@ -1,5 +1,6 @@
 using AutoMapper;
 using DesafioManipulae.API.Dtos;
+using DesafioManipulae.Domain;
 using DesafioManipulae.Domain.Indentity;
 
 namespace DesafioManipulae.API.Helper
@@ -10,6 +11,7 @@ namespace DesafioManipulae.API.Helper
         {
             CreateMap<User, UserDto>().ReverseMap();
             CreateMap<User, UserLoginDto>().ReverseMap();
+            CreateMap<VideoDetalhe, VideoDetalheDto>().ReverseMap();
         }
     }
 }

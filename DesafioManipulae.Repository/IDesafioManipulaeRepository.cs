@@ -1,4 +1,6 @@
+using System;
 using System.Threading.Tasks;
+using DesafioManipulae.Domain;
 
 namespace DesafioManipulae.Repository
 {
@@ -8,5 +10,6 @@ namespace DesafioManipulae.Repository
         void Update<T>(T entity) where T : class;
         void Delete<T>(T entity) where T : class;
         Task<bool> SaveChangesAsync();
+        Task<VideoDetalhe> GetVideoDetalhe(int IdVideo);
     }
 }
