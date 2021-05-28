@@ -11,11 +11,11 @@ namespace DesafioManipulae.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class VideoController : ControllerBase
+    public class PlaylistController : ControllerBase
     {
         public readonly IDesafioManipulaeRepository _repository;
         public readonly IMapper _mapper;
-        public VideoController(IDesafioManipulaeRepository repository, IMapper mapper)
+        public PlaylistController(IDesafioManipulaeRepository repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
@@ -35,7 +35,7 @@ namespace DesafioManipulae.API.Controllers
             {
                 var videoDetalhe = await _repository.GetVideoDetalhe(IdVideo);
                 if (videoDetalhe == null) return NotFound();
-                var result = _mapper.Map<VideoDetalheDto>(videoDetalhe);
+                var result = _mapper.Map<PlaylistDto>(videoDetalhe);
                 return Ok(result);
             }
             catch (System.Exception)
@@ -47,11 +47,11 @@ namespace DesafioManipulae.API.Controllers
 
         #region Create
         [HttpPost]
-        public async Task<IActionResult> Post(VideoDetalheDto model)
+        public async Task<IActionResult> Post(PlaylistDto model)
         {
             try
             {
-                var videoDetalhe = _mapper.Map<VideoDetalhe>(model);
+                var videoDetalhe = _mapper.Map<Playlist>(model);
                 _repository.Add(videoDetalhe);
                 if (await _repository.SaveChangesAsync()) return Created("", videoDetalhe);
             }
@@ -65,7 +65,7 @@ namespace DesafioManipulae.API.Controllers
 
         #region Edit
         [HttpPut("{IdVideo:int}")]
-        public async Task<IActionResult> Put(int IdVideo, VideoDetalheDto model)
+        public async Task<IActionResult> Put(int IdVideo, PlaylistDto model)
         {
             try
             {

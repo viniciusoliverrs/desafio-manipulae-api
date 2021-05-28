@@ -50,7 +50,7 @@ namespace DesafioManipulae.Repository.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "VideosDetalhes",
+                name: "Playlists",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -58,11 +58,11 @@ namespace DesafioManipulae.Repository.Migrations
                     Titulo = table.Column<string>(type: "TEXT", nullable: true),
                     Descricao = table.Column<string>(type: "TEXT", nullable: true),
                     Duracao = table.Column<string>(type: "TEXT", nullable: true),
-                    DataPublicado = table.Column<DateTime>(type: "TEXT", nullable: true)
+                    PublicadoEm = table.Column<DateTime>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_VideosDetalhes", x => x.Id);
+                    table.PrimaryKey("PK_Playlists", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -227,7 +227,7 @@ namespace DesafioManipulae.Repository.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "VideosDetalhes");
+                name: "Playlists");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

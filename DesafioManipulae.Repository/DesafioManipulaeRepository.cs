@@ -21,7 +21,6 @@ namespace DesafioManipulae.Repository
         {
             _context.Update(entity);
         }
-
         public void Delete<T>(T entity) where T : class
         {
             _context.Remove(entity);
@@ -32,9 +31,9 @@ namespace DesafioManipulae.Repository
             return (await _context.SaveChangesAsync() > 0);
         }
 
-        public async Task<VideoDetalhe> GetVideoDetalhe(int IdVideo)
+        public async Task<Playlist> GetVideoDetalhe(int IdVideo)
         {
-            IQueryable<VideoDetalhe> query = _context.VideosDetalhes;
+            IQueryable<Playlist> query = _context.Playlists;
             query = query.OrderBy(c => c.Titulo).Where(c => c.Id == IdVideo);
             return await query.FirstOrDefaultAsync();
         }

@@ -11,7 +11,7 @@ namespace DesafioManipulae.Repository
                                            IdentityRoleClaim<int>, IdentityUserToken<int>>
     {
         public DesafioManipulaeContext(DbContextOptions<DesafioManipulaeContext> options) : base(options) { }
-        public DbSet<VideoDetalhe> VideosDetalhes {get;set;}
+        public DbSet<Playlist> Playlists {get;set;}
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
