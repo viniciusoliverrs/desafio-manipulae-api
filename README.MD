@@ -9,6 +9,9 @@
         Abra um console dentro da pasta DesafioManipulae/DasafioManipulae.API
     </li>
     <li>
-        E execute o comando <code>dotnet watch run</code>
+        Execute o comando <code>dotnet watch run</code>
+    </li>
+    <li>
+        No navegador entre no endereço <code>http://localhost:5000/swagger</code>
     </li>
 </ul>
