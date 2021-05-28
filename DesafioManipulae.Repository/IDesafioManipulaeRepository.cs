@@ -10,6 +10,7 @@ namespace DesafioManipulae.Repository
         void Update<T>(T entity) where T : class;
         void Delete<T>(T entity) where T : class;
         Task<bool> SaveChangesAsync();
-        Task<VideoList> GetVideoDetalhe(int IdVideo);
+        Task<VideoList> GetVideo(int IdVideo);
+        Task<VideoList[]> GetAllVideos();
     }
 }

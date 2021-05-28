@@ -1,4 +1,8 @@
+using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using DesafioManipulae.Domain;
 using Microsoft.EntityFrameworkCore;
@@ -31,11 +35,18 @@ namespace DesafioManipulae.Repository
             return (await _context.SaveChangesAsync() > 0);
         }
 
-        public async Task<VideoList> GetVideoDetalhe(int IdVideo)
+        public async Task<VideoList> GetVideo(int IdVideo)
         {
             IQueryable<VideoList> query = _context.VideosLists;
             query = query.OrderBy(c => c.Titulo).Where(c => c.Id == IdVideo);
             return await query.FirstOrDefaultAsync();
+        }
+
+        public async Task<VideoList[]> GetAllVideos()
+        {
+            IQueryable<VideoList> query = _context.VideosLists;
+            query = query.OrderBy(c => c.Titulo);
+            return await query.ToArrayAsync();
         }
     }
 }

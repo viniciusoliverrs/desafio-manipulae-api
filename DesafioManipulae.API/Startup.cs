@@ -40,9 +40,10 @@ namespace DesafioManipulae.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHttpClient();
             services.AddControllers();
             services.AddAutoMapper();
-            services.AddControllers().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+            services.AddControllers().AddNewtonsoftJson();
             services.AddDbContext<DesafioManipulaeContext>(o => o.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<IDesafioManipulaeRepository, DesafioManipulaeRepository>();
 

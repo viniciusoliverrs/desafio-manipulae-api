@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
 using AutoMapper;
 using DesafioManipulae.API.Dtos;
@@ -6,34 +10,51 @@ using DesafioManipulae.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace DesafioManipulae.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class PlaylistController : ControllerBase
+    public class VideoController : ControllerBase
     {
         public readonly IDesafioManipulaeRepository _repository;
         public readonly IMapper _mapper;
-        public PlaylistController(IDesafioManipulaeRepository repository, IMapper mapper)
+        private readonly IHttpClientFactory _clienteFactory;
+        public VideoController(IDesafioManipulaeRepository repository, IMapper mapper, IHttpClientFactory clientFactory)
         {
             _repository = repository;
             _mapper = mapper;
+            _clienteFactory = clientFactory;
         }
+
+        #region Get All
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> Get()
         {
-            return Ok();
+            try
+            {
+                var videoDetalhe = await _repository.GetAllVideos();
+                if (videoDetalhe == null) return NotFound();
+                var result = _mapper.Map<IEnumerable<VideoListDto>>(videoDetalhe);
+                return Ok(result);
+            }
+            catch (System.Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Ocorreu um erro na operação!");
+            }
         }
+        #endregion
 
         #region Get By Id
         [HttpGet("{IdVideo:int}")]
+        [AllowAnonymous]
         public async Task<IActionResult> Get(int IdVideo)
         {
             try
             {
-                var videoDetalhe = await _repository.GetVideoDetalhe(IdVideo);
+                var videoDetalhe = await _repository.GetVideo(IdVideo);
                 if (videoDetalhe == null) return NotFound();
                 var result = _mapper.Map<VideoListDto>(videoDetalhe);
                 return Ok(result);
@@ -47,6 +68,7 @@ namespace DesafioManipulae.API.Controllers
 
         #region Create
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Post(VideoListDto model)
         {
             try
@@ -65,11 +87,12 @@ namespace DesafioManipulae.API.Controllers
 
         #region Edit
         [HttpPut("{IdVideo:int}")]
+        [AllowAnonymous]
         public async Task<IActionResult> Put(int IdVideo, VideoListDto model)
         {
             try
             {
-                var videoDetalhe = await _repository.GetVideoDetalhe(IdVideo);
+                var videoDetalhe = await _repository.GetVideo(IdVideo);
 
                 if (videoDetalhe == null) return NotFound();
 
@@ -88,11 +111,12 @@ namespace DesafioManipulae.API.Controllers
 
         #region Delete
         [HttpDelete("{IdVideo:int}")]
+        [AllowAnonymous]
         public async Task<IActionResult> Delete(int IdVideo)
         {
             try
             {
-                var evento = await _repository.GetVideoDetalhe(IdVideo);
+                var evento = await _repository.GetVideo(IdVideo);
 
                 if (evento == null) return NotFound();
                 _repository.Delete(evento);
