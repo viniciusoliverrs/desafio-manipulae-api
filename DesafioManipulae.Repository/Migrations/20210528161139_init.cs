@@ -56,8 +56,9 @@ namespace DesafioManipulae.Repository.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Titulo = table.Column<string>(type: "TEXT", nullable: true),
+                    Autor = table.Column<string>(type: "TEXT", nullable: true),
                     Descricao = table.Column<string>(type: "TEXT", nullable: true),
-                    Duracao = table.Column<string>(type: "TEXT", nullable: true),
+                    Duracao = table.Column<int>(type: "INTEGER", nullable: false),
                     PublicadoEm = table.Column<DateTime>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>

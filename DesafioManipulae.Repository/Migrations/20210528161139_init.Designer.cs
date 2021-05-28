@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DesafioManipulae.Repository.Migrations
 {
     [DbContext(typeof(DesafioManipulaeContext))]
-    [Migration("20210528033026_init")]
+    [Migration("20210528161139_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -136,11 +136,14 @@ namespace DesafioManipulae.Repository.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Autor")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Descricao")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Duracao")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Duracao")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime?>("PublicadoEm")
                         .HasColumnType("TEXT");

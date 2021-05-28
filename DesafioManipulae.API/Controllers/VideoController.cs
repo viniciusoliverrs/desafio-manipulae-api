@@ -27,6 +27,12 @@ namespace DesafioManipulae.API.Controllers
             _mapper = mapper;
             _clienteFactory = clientFactory;
         }
+        [HttpGet("Filter")]
+        [AllowAnonymous]
+        public async Task<IActionResult> TestApi(string Titulo="",int Duracao=0, string Autor="",string q="",string PublicadoEm=""){
+            var videos = await _repository.GetYoutubeApiVideos(Titulo,Duracao,Autor,q,PublicadoEm);
+            return Ok(videos);
+        }
 
         #region Get All
         [HttpGet]
@@ -49,6 +55,7 @@ namespace DesafioManipulae.API.Controllers
 
         #region Get By Id
         [HttpGet("{IdVideo:int}")]
+        [AllowAnonymous]
         public async Task<IActionResult> Get(int IdVideo)
         {
             try
@@ -67,6 +74,7 @@ namespace DesafioManipulae.API.Controllers
 
         #region Create
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Post(VideoListDto model)
         {
             try
@@ -85,9 +93,10 @@ namespace DesafioManipulae.API.Controllers
 
         #region Edit
         [HttpPut("{IdVideo:int}")]
+        [AllowAnonymous]
         public async Task<IActionResult> Put(int IdVideo, VideoListDto model)
         {
-            try
+            try 
             {
                 var videoDetalhe = await _repository.GetVideo(IdVideo);
 
@@ -96,7 +105,7 @@ namespace DesafioManipulae.API.Controllers
                 _mapper.Map(model, videoDetalhe);
                 _repository.Update(videoDetalhe);
 
-                if (await _repository.SaveChangesAsync()) return Created($"", model);
+                if (await _repository.SaveChangesAsync()) return Created("", model);
             }
             catch (System.Exception)
             {
@@ -108,6 +117,7 @@ namespace DesafioManipulae.API.Controllers
 
         #region Delete
         [HttpDelete("{IdVideo:int}")]
+        [AllowAnonymous]
         public async Task<IActionResult> Delete(int IdVideo)
         {
             try

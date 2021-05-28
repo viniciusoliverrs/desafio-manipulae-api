@@ -134,11 +134,14 @@ namespace DesafioManipulae.Repository.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Autor")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Descricao")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Duracao")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Duracao")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime?>("PublicadoEm")
                         .HasColumnType("TEXT");
