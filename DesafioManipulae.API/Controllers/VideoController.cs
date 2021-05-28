@@ -49,7 +49,6 @@ namespace DesafioManipulae.API.Controllers
 
         #region Get By Id
         [HttpGet("{IdVideo:int}")]
-        [AllowAnonymous]
         public async Task<IActionResult> Get(int IdVideo)
         {
             try
@@ -68,7 +67,6 @@ namespace DesafioManipulae.API.Controllers
 
         #region Create
         [HttpPost]
-        [AllowAnonymous]
         public async Task<IActionResult> Post(VideoListDto model)
         {
             try
@@ -87,7 +85,6 @@ namespace DesafioManipulae.API.Controllers
 
         #region Edit
         [HttpPut("{IdVideo:int}")]
-        [AllowAnonymous]
         public async Task<IActionResult> Put(int IdVideo, VideoListDto model)
         {
             try
@@ -111,7 +108,6 @@ namespace DesafioManipulae.API.Controllers
 
         #region Delete
         [HttpDelete("{IdVideo:int}")]
-        [AllowAnonymous]
         public async Task<IActionResult> Delete(int IdVideo)
         {
             try
