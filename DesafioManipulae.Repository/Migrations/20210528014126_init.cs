@@ -28,7 +28,7 @@ namespace DesafioManipulae.Repository.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    FullName = table.Column<string>(type: "TEXT", nullable: false),
+                    FullName = table.Column<string>(type: "TEXT", maxLength: 80, nullable: false),
                     UserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
@@ -47,6 +47,22 @@ namespace DesafioManipulae.Repository.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "VideosDetalhes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Titulo = table.Column<string>(type: "TEXT", nullable: true),
+                    Descricao = table.Column<string>(type: "TEXT", nullable: true),
+                    Duracao = table.Column<string>(type: "TEXT", nullable: true),
+                    DataPublicado = table.Column<DateTime>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_VideosDetalhes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -209,6 +225,9 @@ namespace DesafioManipulae.Repository.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "VideosDetalhes");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
