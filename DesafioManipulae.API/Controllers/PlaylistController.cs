@@ -35,7 +35,7 @@ namespace DesafioManipulae.API.Controllers
             {
                 var videoDetalhe = await _repository.GetVideoDetalhe(IdVideo);
                 if (videoDetalhe == null) return NotFound();
-                var result = _mapper.Map<PlaylistDto>(videoDetalhe);
+                var result = _mapper.Map<VideoListDto>(videoDetalhe);
                 return Ok(result);
             }
             catch (System.Exception)
@@ -47,11 +47,11 @@ namespace DesafioManipulae.API.Controllers
 
         #region Create
         [HttpPost]
-        public async Task<IActionResult> Post(PlaylistDto model)
+        public async Task<IActionResult> Post(VideoListDto model)
         {
             try
             {
-                var videoDetalhe = _mapper.Map<Playlist>(model);
+                var videoDetalhe = _mapper.Map<VideoList>(model);
                 _repository.Add(videoDetalhe);
                 if (await _repository.SaveChangesAsync()) return Created("", videoDetalhe);
             }
@@ -65,7 +65,7 @@ namespace DesafioManipulae.API.Controllers
 
         #region Edit
         [HttpPut("{IdVideo:int}")]
-        public async Task<IActionResult> Put(int IdVideo, PlaylistDto model)
+        public async Task<IActionResult> Put(int IdVideo, VideoListDto model)
         {
             try
             {

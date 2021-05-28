@@ -128,7 +128,7 @@ namespace DesafioManipulae.Repository.Migrations
                     b.ToTable("AspNetUserRoles");
                 });
 
-            modelBuilder.Entity("DesafioManipulae.Domain.Playlist", b =>
+            modelBuilder.Entity("DesafioManipulae.Domain.VideoList", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -148,7 +148,7 @@ namespace DesafioManipulae.Repository.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Playlists");
+                    b.ToTable("VideosLists");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>

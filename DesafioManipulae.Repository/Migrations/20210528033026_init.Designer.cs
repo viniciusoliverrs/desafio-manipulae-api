@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DesafioManipulae.Repository.Migrations
 {
     [DbContext(typeof(DesafioManipulaeContext))]
-    [Migration("20210528032132_init")]
+    [Migration("20210528033026_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -130,7 +130,7 @@ namespace DesafioManipulae.Repository.Migrations
                     b.ToTable("AspNetUserRoles");
                 });
 
-            modelBuilder.Entity("DesafioManipulae.Domain.Playlist", b =>
+            modelBuilder.Entity("DesafioManipulae.Domain.VideoList", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -150,7 +150,7 @@ namespace DesafioManipulae.Repository.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Playlists");
+                    b.ToTable("VideosLists");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>

@@ -1,12 +1,13 @@
 using System;
 
-namespace DesafioManipulae.API.Dtos
+namespace DesafioManipulae.Domain
 {
-    public class PlaylistDto
+    public class VideoList
     {
+        public int Id { get; set; }
         public string Titulo { get; set; }
         public string Descricao { get; set; }
         public string Duracao { get; set; }
-        public DateTime? DataPublicado { get; set; }
+        public DateTime? PublicadoEm { get; set; }
     }
 }

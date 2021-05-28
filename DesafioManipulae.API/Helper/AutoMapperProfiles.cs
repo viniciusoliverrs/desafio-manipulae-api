@@ -11,7 +11,7 @@ namespace DesafioManipulae.API.Helper
         {
             CreateMap<User, UserDto>().ReverseMap();
             CreateMap<User, UserLoginDto>().ReverseMap();
-            CreateMap<Playlist, PlaylistDto>().ReverseMap();
+            CreateMap<VideoList, VideoListDto>().ReverseMap();
         }
     }
 }
