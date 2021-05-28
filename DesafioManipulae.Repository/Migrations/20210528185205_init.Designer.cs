@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DesafioManipulae.Repository.Migrations
 {
     [DbContext(typeof(DesafioManipulaeContext))]
-    [Migration("20210528161139_init")]
+    [Migration("20210528185205_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
