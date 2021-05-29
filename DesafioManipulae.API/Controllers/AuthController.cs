@@ -39,16 +39,10 @@ namespace DesafioManipulae.API.Controllers
         [HttpGet("GetUser")]
         public async Task<IActionResult> GetUser(UserDto userDto)
         {
-            try
-            {
                 return Ok(userDto);
-            }
-            catch (System.Exception)
-            {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Ocorreu um erro na operação!");
-            }
         }
-        #endregion
+        #endregion 
+
 
         #region Register
         [HttpPost("Register")]
@@ -63,9 +57,9 @@ namespace DesafioManipulae.API.Controllers
                 if (result.Succeeded) return Created("GetUser", userToReturn);
                 return BadRequest(result.Errors);
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Falha no Banco de dados! {ex}");
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Falha no Banco de dados!");
             }
         }
         #endregion
@@ -91,9 +85,9 @@ namespace DesafioManipulae.API.Controllers
                 }
                 return Unauthorized();
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Falha no Banco de dados! {ex}");
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Falha no Banco de dados!");
             }
         }
         #endregion
