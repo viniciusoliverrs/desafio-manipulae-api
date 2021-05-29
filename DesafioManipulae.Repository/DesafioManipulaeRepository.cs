@@ -107,26 +107,27 @@ namespace DesafioManipulae.Repository
                 }
             }
 
-            if (Duracao > 0) 
+            if (Duracao > 0)
                 videos = videos.OrderBy(v => v.Autor).Where(v => v.Duracao >= Duracao).ToList();
-                 
+
             return videos.ToArray();
         }
-        public async Task<VideoList[]> VideosSearch(string Titulo, int Duracao, string Autor, string PublicadoEm, string q) {
+        public async Task<VideoList[]> VideosSearch(string Titulo, int Duracao, string Autor, string PublicadoEm, string q)
+        {
             IQueryable<VideoList> query = _context.VideosLists;
-            if (Duracao > 0) 
-                query = query.OrderBy(v => v.Autor).Where(v => v.Duracao >= Duracao);
-            
-            if (!string.IsNullOrEmpty(Autor)) 
-                query = query.OrderBy(v => v.Autor).Where(v => v.Autor.ToLower().Contains(Autor.ToLower()));
-            
+            if (Duracao > 0)
+                query = query.Where(v => v.Duracao >= Duracao);
+
+            if (!string.IsNullOrEmpty(Autor))
+                query = query.Where(v => v.Autor.ToLower().Contains(Autor.ToLower()));
+
             if (!string.IsNullOrEmpty(Titulo))
-                query = query.OrderBy(v => v.Titulo).Where(v => v.Titulo.ToLower().Contains(Titulo.ToLower()));
-            
+                query = query.Where(v => v.Titulo.ToLower().Contains(Titulo.ToLower()));
+
             if (!string.IsNullOrEmpty(q))
-                query = query.OrderBy(v => v.Autor).Where(v => v.Autor.ToLower().Contains(q.ToLower()) || v.Autor.ToLower().Contains(q.ToLower()) || v.Descricao.ToLower().Contains(q.ToLower()));
-            
-            return await query.ToArrayAsync();
+                query = query.Where(v => v.Autor.ToLower().Contains(q.ToLower()) || v.Autor.ToLower().Contains(q.ToLower()) || v.Descricao.ToLower().Contains(q.ToLower()));
+
+            return await query.OrderBy(v => v.Id).ToArrayAsync();
         }
     }
 }
