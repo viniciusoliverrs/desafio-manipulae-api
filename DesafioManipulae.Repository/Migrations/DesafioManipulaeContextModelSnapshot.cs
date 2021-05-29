@@ -143,7 +143,7 @@ namespace DesafioManipulae.Repository.Migrations
                     b.Property<int>("Duracao")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime?>("PublicadoEm")
+                    b.Property<DateTime>("PublicadoEm")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Titulo")

@@ -9,6 +9,6 @@ namespace DesafioManipulae.API.Dtos
         public string Autor { get; set; }
         public string Descricao { get; set; }
         public int Duracao { get; set; }
-        public DateTime? PublicadoEm { get; set; }
+        public DateTime PublicadoEm { get; set; }
     }
 }

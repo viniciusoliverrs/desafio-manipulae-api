@@ -59,7 +59,7 @@ namespace DesafioManipulae.Repository.Migrations
                     Autor = table.Column<string>(type: "TEXT", nullable: true),
                     Descricao = table.Column<string>(type: "TEXT", nullable: true),
                     Duracao = table.Column<int>(type: "INTEGER", nullable: false),
-                    PublicadoEm = table.Column<DateTime>(type: "TEXT", nullable: true)
+                    PublicadoEm = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {

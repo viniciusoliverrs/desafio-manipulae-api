@@ -31,10 +31,17 @@ namespace DesafioManipulae.API.Controllers
         #region  YoutubeApiVideos
         [HttpGet("YoutubeApiVideos")]
         [AllowAnonymous]
-        public async Task<IActionResult> YoutubeApiVideos(int Duracao = 0,string q = "")
+        public async Task<IActionResult> YoutubeApiVideos(int Duracao = 0, string q = "")
         {
-            var videos = await _repository.GetYoutubeApiVideos(Duracao, q);
-            return Ok(videos);
+            try
+            {
+                var videos = await _repository.GetYoutubeApiVideos(Duracao, q);
+                return Ok(videos);
+            }
+            catch (System.Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Ocorreu um erro na operação!");
+            }
         }
         #endregion
 
@@ -43,8 +50,15 @@ namespace DesafioManipulae.API.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Filter(string Titulo = "", int Duracao = 0, string Autor = "", string q = "", string PublicadoEm = "")
         {
-            var videos = await _repository.VideosSearch(Titulo, Duracao, Autor, q, PublicadoEm);
-            return Ok(videos);
+            try
+            {
+                var videos = await _repository.VideosSearch(Titulo, Duracao, Autor, q, PublicadoEm);
+                return Ok(videos);
+            }
+            catch (System.Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Ocorreu um erro na operação!");
+            }
         }
         #endregion
 
