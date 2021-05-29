@@ -64,7 +64,6 @@ namespace DesafioManipulae.API.Controllers
 
         #region Get All
         [HttpGet]
-        [AllowAnonymous]
         public async Task<IActionResult> Get()
         {
             try

@@ -15,3 +15,20 @@
         No navegador entre no endereço <code>http://localhost:5000/swagger</code>
     </li>
 </ul>
+<h4>Rotas:</h4>
+<hr/>
+<h6>Auth</h6>
+<ul>
+    <li>
+        /Login - METHOD: POST<br/>
+        Parâmetros de entrada:<br/>
+        String userName<br/>
+        String password<br/>
+        Retorno<br/>
+        String token
+    </li>
+    <li>
+        /Register - METHOD: POST<br/>
+    </li>
+</ul>
+
