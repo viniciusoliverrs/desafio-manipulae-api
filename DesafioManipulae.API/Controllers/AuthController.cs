@@ -27,14 +27,28 @@ namespace DesafioManipulae.API.Controllers
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly IMapper _mapper;
-        
+
         public AuthController(IConfiguration config, UserManager<User> userManager, SignInManager<User> signInManager, IMapper mapper)
         {
             _config = config;
             _userManager = userManager;
             _signInManager = signInManager;
-             _mapper = mapper;
+            _mapper = mapper;
         }
+        #region  GetUser
+        [HttpGet("GetUser")]
+        public async Task<IActionResult> GetUser(UserDto userDto)
+        {
+            try
+            {
+                return Ok(userDto);
+            }
+            catch (System.Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Ocorreu um erro na operação!");
+            }
+        }
+        #endregion
 
         #region Register
         [HttpPost("Register")]
@@ -83,7 +97,7 @@ namespace DesafioManipulae.API.Controllers
             }
         }
         #endregion
-       
+
         #region Generate Token
         private async Task<string> GenerateJWToken(User user)
         {

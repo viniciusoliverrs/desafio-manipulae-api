@@ -74,7 +74,7 @@ namespace DesafioManipulae.Repository
                 ApplicationName = this.GetType().ToString()
             });
             var searchListRequest = youtubeService.Search.List("snippet");
-            searchListRequest.Q = "Manipulação de remédio"; // Replace with your search term.
+            searchListRequest.Q = "Manipulação,Remédio, Farmacêutica, Medicamento"; // Replace with your search term.
             searchListRequest.MaxResults = 50;
             searchListRequest.PublishedAfter = Convert.ToDateTime("2020-01-01T00:00:00Z");
 
@@ -117,7 +117,7 @@ namespace DesafioManipulae.Repository
 
             return videos.OrderBy(v => v.Id).ToArray();
         }
-        public async Task<VideoList[]> VideosSearch(string Titulo, int Duracao, string Autor, string PublicadoEm, string q)
+        public async Task<VideoList[]> VideosSearch(string Titulo,int Duracao, string Autor,string q,string PublicadoEm)
         {
             IQueryable<VideoList> query = _context.VideosLists;
             if (Duracao > 0)
@@ -134,7 +134,7 @@ namespace DesafioManipulae.Repository
                 v.Descricao.ToLower().Contains(q.ToLower()) ||
                 v.Titulo.ToLower().Contains(q.ToLower()));
             if (!string.IsNullOrEmpty(PublicadoEm))
-                query = query.OrderBy(v => v.PublicadoEm).Where(v => DateTime.Compare(Convert.ToDateTime(PublicadoEm), Convert.ToDateTime(v.PublicadoEm)) < 0);
+                query = query.OrderBy(v => v.PublicadoEm).Where(v => v.PublicadoEm > Convert.ToDateTime(PublicadoEm));
 
             return await query.ToArrayAsync();
         }

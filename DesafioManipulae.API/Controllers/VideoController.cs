@@ -40,7 +40,7 @@ namespace DesafioManipulae.API.Controllers
             }
             catch (System.Exception)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Ocorreu um erro na operação!");
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Ocorreu um erro na operação!");
             }
         }
         #endregion
@@ -57,7 +57,7 @@ namespace DesafioManipulae.API.Controllers
             }
             catch (System.Exception)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Ocorreu um erro na operação!");
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Ocorreu um erro na operação!");
             }
         }
         #endregion
@@ -76,7 +76,7 @@ namespace DesafioManipulae.API.Controllers
             }
             catch (System.Exception)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Ocorreu um erro na operação!");
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Ocorreu um erro na operação!");
             }
         }
         #endregion
@@ -94,7 +94,7 @@ namespace DesafioManipulae.API.Controllers
             }
             catch (System.Exception)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Ocorreu um erro na operação!");
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Ocorreu um erro na operação!");
             }
         }
         #endregion
@@ -111,7 +111,7 @@ namespace DesafioManipulae.API.Controllers
             }
             catch (System.Exception)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Ocorreu um erro na operação!");
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Ocorreu um erro na operação!");
             }
             return BadRequest();
         }
@@ -134,7 +134,7 @@ namespace DesafioManipulae.API.Controllers
             }
             catch (System.Exception)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Ocorreu um erro na operação!");
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Ocorreu um erro na operação!");
             }
             return BadRequest();
         }
@@ -154,7 +154,7 @@ namespace DesafioManipulae.API.Controllers
             }
             catch (System.Exception)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Ocorreu um erro na operação!");
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Ocorreu um erro na operação!");
             }
             return BadRequest();
         }

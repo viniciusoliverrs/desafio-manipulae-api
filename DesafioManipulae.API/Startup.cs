@@ -94,11 +94,9 @@ namespace DesafioManipulae.API
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DesafioManipulae.API v1"));
             }
-
-            app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
-
+            app.UseRouting();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
