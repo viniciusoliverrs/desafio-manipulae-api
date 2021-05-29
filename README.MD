@@ -1,5 +1,5 @@
 # Desafio Manipulaê
-<h4>Primeiros passos para executar o projeto</h4>
+<h3>Primeiros passos para executar o projeto</h3>
 <hr/>
 <ul>
     <li>
@@ -15,9 +15,9 @@
         No navegador entre no endereço <code>http://localhost:5000/swagger</code>
     </li>
 </ul>
-<h4>Rotas:</h4>
+<h3>Rotas:</h3>
 <hr/>
-<h6>Auth</h6>
+<h4>Auth</h4>
 <ul>
     <li>
         /Login - METHOD: POST<br/>
