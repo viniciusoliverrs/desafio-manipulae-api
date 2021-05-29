@@ -116,17 +116,18 @@ namespace DesafioManipulae.Repository
         {
             IQueryable<VideoList> query = _context.VideosLists;
             if (Duracao > 0)
-                query = query.Where(v => v.Duracao >= Duracao);
+                query = query.OrderBy(v => v.Duracao).Where(v => v.Duracao >= Duracao);
 
             if (!string.IsNullOrEmpty(Autor))
-                query = query.Where(v => v.Autor.ToLower().Contains(Autor.ToLower()));
+                query = query.OrderBy(v => v.Autor).Where(v => v.Autor.ToLower().Contains(Autor.ToLower()));
 
             if (!string.IsNullOrEmpty(Titulo))
-                query = query.Where(v => v.Titulo.ToLower().Contains(Titulo.ToLower()));
+                query = query.OrderBy(v => v.Titulo).Where(v => v.Titulo.ToLower().Contains(Titulo.ToLower()));
 
             if (!string.IsNullOrEmpty(q))
-                query = query.Where(v => v.Autor.ToLower().Contains(q.ToLower()) || v.Autor.ToLower().Contains(q.ToLower()) || v.Descricao.ToLower().Contains(q.ToLower()));
-
+                query = query.OrderBy(v => v.Id).Where(v => v.Autor.ToLower().Contains(q.ToLower()) || v.Autor.ToLower().Contains(q.ToLower()) || v.Descricao.ToLower().Contains(q.ToLower()));
+            if (!string.IsNullOrEmpty(PublicadoEm))
+                query = query.OrderBy(v => v.PublicadoEm).Where(v => DateTime.Compare(Convert.ToDateTime(PublicadoEm),Convert.ToDateTime(v.PublicadoEm)) > 0);
             return await query.OrderBy(v => v.Id).ToArrayAsync();
         }
     }
