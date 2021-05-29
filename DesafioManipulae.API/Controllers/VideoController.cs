@@ -27,12 +27,23 @@ namespace DesafioManipulae.API.Controllers
             _mapper = mapper;
             _clienteFactory = clientFactory;
         }
-        
-        #region  Filter
+
+        #region  YoutubeApiVideos
+        [HttpGet("YoutubeApiVideos")]
+        [AllowAnonymous]
+        public async Task<IActionResult> YoutubeApiVideos(int Duracao = 0,string q = "")
+        {
+            var videos = await _repository.GetYoutubeApiVideos(Duracao, q);
+            return Ok(videos);
+        }
+        #endregion
+
+        #region Filter
         [HttpGet("Filter")]
         [AllowAnonymous]
-        public async Task<IActionResult> TestApi(string Titulo="",int Duracao=0, string Autor="",string q="",string PublicadoEm=""){
-            var videos = await _repository.GetYoutubeApiVideos(Titulo,Duracao,Autor,q,PublicadoEm);
+        public async Task<IActionResult> Filter(string Titulo = "", int Duracao = 0, string Autor = "", string q = "", string PublicadoEm = "")
+        {
+            var videos = await _repository.VideosSearch(Titulo, Duracao, Autor, q, PublicadoEm);
             return Ok(videos);
         }
         #endregion
@@ -58,7 +69,6 @@ namespace DesafioManipulae.API.Controllers
 
         #region Get By Id
         [HttpGet("{IdVideo:int}")]
-        [AllowAnonymous]
         public async Task<IActionResult> Get(int IdVideo)
         {
             try
@@ -97,7 +107,7 @@ namespace DesafioManipulae.API.Controllers
         [HttpPut("{IdVideo:int}")]
         public async Task<IActionResult> Put(int IdVideo, VideoListDto model)
         {
-            try 
+            try
             {
                 var videoDetalhe = await _repository.GetVideo(IdVideo);
 

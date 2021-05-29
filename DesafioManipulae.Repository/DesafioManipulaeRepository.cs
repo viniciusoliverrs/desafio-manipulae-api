@@ -62,7 +62,7 @@ namespace DesafioManipulae.Repository
             return await query.ToArrayAsync();
         }
 
-        public async Task<VideoList[]> GetYoutubeApiVideos(string Titulo, int Duracao, string Autor, string PublicadoEm, string q)
+        public async Task<VideoList[]> GetYoutubeApiVideos(int Duracao, string q)
         {
             videos = new List<VideoList>();
             webClient = new WebClient();
@@ -74,8 +74,8 @@ namespace DesafioManipulae.Repository
                 ApplicationName = this.GetType().ToString()
             });
             var searchListRequest = youtubeService.Search.List("snippet");
-            searchListRequest.Q = "Manipulação de remédio " + q; // Replace with your search term.
-            searchListRequest.MaxResults = 200;
+            searchListRequest.Q = $"Manipulação de remédio"; // Replace with your search term.
+            searchListRequest.MaxResults = 50;
             searchListRequest.PublishedAfter = Convert.ToDateTime("2020-01-01T00:00:00Z");
 
             // Call the search.list method to retrieve results matching the specified query term.
@@ -103,25 +103,30 @@ namespace DesafioManipulae.Repository
                         PublicadoEm = Convert.ToDateTime(searchResult.Snippet.PublishedAt)
                     };
                     VideoId++;
-                    //this.Add(video);
-                    //await SaveChangesAsync();
                     videos.Add(video);
                 }
             }
 
             if (Duracao > 0) 
                 videos = videos.OrderBy(v => v.Autor).Where(v => v.Duracao >= Duracao).ToList();
+                 
+            return videos.ToArray();
+        }
+        public async Task<VideoList[]> VideosSearch(string Titulo, int Duracao, string Autor, string PublicadoEm, string q) {
+            IQueryable<VideoList> query = _context.VideosLists;
+            if (Duracao > 0) 
+                query = query.OrderBy(v => v.Autor).Where(v => v.Duracao >= Duracao);
             
             if (!string.IsNullOrEmpty(Autor)) 
-                videos = videos.OrderBy(v => v.Autor).Where(v => v.Autor.ToLower().Contains(Autor.ToLower())).ToList();
+                query = query.OrderBy(v => v.Autor).Where(v => v.Autor.ToLower().Contains(Autor.ToLower()));
             
             if (!string.IsNullOrEmpty(Titulo))
-                videos = videos.OrderBy(v => v.Titulo).Where(v => v.Titulo.ToLower().Contains(Titulo.ToLower())).ToList();
+                query = query.OrderBy(v => v.Titulo).Where(v => v.Titulo.ToLower().Contains(Titulo.ToLower()));
             
             if (!string.IsNullOrEmpty(q))
-                videos = videos.OrderBy(v => v.Autor).Where(v => v.Autor.ToLower().Contains(q.ToLower()) || v.Autor.ToLower().Contains(q.ToLower()) || v.Descricao.ToLower().Contains(q.ToLower())).ToList();
+                query = query.OrderBy(v => v.Autor).Where(v => v.Autor.ToLower().Contains(q.ToLower()) || v.Autor.ToLower().Contains(q.ToLower()) || v.Descricao.ToLower().Contains(q.ToLower()));
             
-            return videos.ToArray();
+            return await query.ToArrayAsync();
         }
     }
 }

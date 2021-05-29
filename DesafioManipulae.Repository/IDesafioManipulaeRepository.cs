@@ -13,6 +13,7 @@ namespace DesafioManipulae.Repository
         Task<bool> SaveChangesAsync();
         Task<VideoList> GetVideo(int IdVideo);
         Task<VideoList[]> GetAllVideos();
-        Task<VideoList[]> GetYoutubeApiVideos(string Titulo,int Duracao, string Autor,string q,string PublicadoEm);
+        Task<VideoList[]> GetYoutubeApiVideos(int Duracao, string q);
+        Task<VideoList[]> VideosSearch(string Titulo,int Duracao, string Autor,string q,string PublicadoEm);
     }
 }
