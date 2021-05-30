@@ -17,23 +17,7 @@
 </ul>
 <h3>Rotas:</h3>
 <hr/>
-<h4>Auth</h4>
-<ul>
-    <li>
-        /Login - METHOD: POST<br/>
-        Parâmetros de entrada:<br/>
-        String userName<br/>
-        String password<br/>
-        Retorno<br/>
-        String token
-    </li>
-    <li>
-        /Register - METHOD: POST<br/>
-        String titulo<br/>
-        String autor<br/>      
-        String descricao<br/>
-        int duracao<br/>
-        DateTime publicadoEm
-    </li>
-</ul>
-
+# /Auth/Login - POST - Parâmetros de entrada: String userName, String password - Retorno: String token
+# /Auth/Register - POST - String titulo, String autor, String descricao, int duracao, DateTime publicadoEm
+# /Video - GET - Retorna todos os videos.
+# /Video/ - GET Parâmetros de entrada: int IdVideo - Retorno: Retorna o video com o IdVideo indicado.
