@@ -1,4 +1,5 @@
-# Desafio Manipulaê
+<h1>Desafio Manipulaê</h1>
+<p>Para realizar a autenticação no header use: <code>Authorization: Bearer <token></code></p>
 <h3>Primeiros passos para executar o projeto</h3>
 <hr/>
 <ul>
@@ -17,7 +18,11 @@
 </ul>
 <h3>Rotas:</h3>
 <hr/>
-/Auth/Login - POST - Parâmetros de entrada: String userName, String password - Retorno: String token<br/>
-/Auth/Register - POST - String titulo, String autor, String descricao, int duracao, DateTime publicadoEm<br/>
-/Video - GET - Retorna todos os videos.<br/>
-/Video/ - GET Parâmetros de entrada: int IdVideo - Retorno: Retorna o video com o IdVideo indicado.<br/>
+/Auth/Login - POST - Parâmetros de entrada: String userName, String password - Retorno: String token
+<br/>
+/Auth/Register - POST - String titulo, String autor, String descricao, int duracao, DateTime publicadoEm
+<br/>
+/Video - GET - Retorna todos os videos.
+<br/>
+/Video/ - GET Parâmetros de entrada: int IdVideo - Retorno: Retorna o video com o IdVideo indicado.
+<br/>
