@@ -29,6 +29,11 @@
     </li>
     <li>
         /Register - METHOD: POST<br/>
+        String titulo<br/>
+        String autor<br/>      
+        String descricao<br/>
+        int duracao<br/>
+        DateTime publicadoEm
     </li>
 </ul>
 
