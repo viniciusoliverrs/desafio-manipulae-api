@@ -16,13 +16,3 @@
         No navegador entre no endereço <code>http://localhost:5000/swagger</code>
     </li>
 </ul>
-<h3>Rotas:</h3>
-<hr/>
-/Auth/Login - POST - Parâmetros de entrada: String userName, String password - Retorno: String token
-<br/>
-/Auth/Register - POST - String titulo, String autor, String descricao, int duracao, DateTime publicadoEm
-<br/>
-/Video - GET - Retorna todos os videos.
-<br/>
-/Video/ - GET Parâmetros de entrada: int IdVideo - Retorno: Retorna o video com o IdVideo indicado.
-<br/>
