@@ -1,5 +1,5 @@
 <h1>Desafio Manipulaê</h1>
-<p>Para realizar a autenticação no header use: <code>Authorization: Bearer <token></code></p>
+<p>Para realizar a autenticação no header use: <code>Authorization: Bearer [token]</code></p>
 <h3>Primeiros passos para executar o projeto</h3>
 <hr/>
 <ul>
