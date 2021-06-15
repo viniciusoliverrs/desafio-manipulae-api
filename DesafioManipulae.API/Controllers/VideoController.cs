@@ -34,7 +34,8 @@ namespace DesafioManipulae.API.Controllers
             try
             {
                 var videos = await _repository.GetYoutubeApiVideos(Duracao, q);
-                return Ok(videos);
+                var result = _mapper.Map<IEnumerable<VideoListDto>>(videos);
+                return Ok(result);
             }
             catch (System.Exception)
             {
@@ -51,7 +52,8 @@ namespace DesafioManipulae.API.Controllers
             try
             {
                 var videos = await _repository.VideosSearch(Titulo, Duracao, Autor, q, PublicadoEm);
-                return Ok(videos);
+                var result = _mapper.Map<IEnumerable<VideoListDto>>(videos);
+                return Ok(result);
             }
             catch (System.Exception)
             {
