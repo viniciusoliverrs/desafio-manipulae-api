@@ -18,14 +18,12 @@ namespace DesafioManipulae.API.Controllers
     [Route("api/[controller]")]
     public class VideoController : ControllerBase
     {
-        public readonly IDesafioManipulaeRepository _repository;
-        public readonly IMapper _mapper;
-        private readonly IHttpClientFactory _clienteFactory;
-        public VideoController(IDesafioManipulaeRepository repository, IMapper mapper, IHttpClientFactory clientFactory)
+        private readonly IDesafioManipulaeRepository _repository;
+        private readonly IMapper _mapper;
+        public VideoController(IDesafioManipulaeRepository repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
-            _clienteFactory = clientFactory;
         }
 
         #region  YoutubeApiVideos
@@ -69,7 +67,6 @@ namespace DesafioManipulae.API.Controllers
             try
             {
                 var videoDetalhe = await _repository.GetAllVideos();
-                if (videoDetalhe == null) return NotFound();
                 var result = _mapper.Map<IEnumerable<VideoListDto>>(videoDetalhe);
                 return Ok(result);
             }
@@ -87,7 +84,6 @@ namespace DesafioManipulae.API.Controllers
             try
             {
                 var videoDetalhe = await _repository.GetVideo(IdVideo);
-                if (videoDetalhe == null) return NotFound();
                 var result = _mapper.Map<VideoListDto>(videoDetalhe);
                 return Ok(result);
             }
