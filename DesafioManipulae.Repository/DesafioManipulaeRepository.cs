@@ -20,7 +20,7 @@ namespace DesafioManipulae.Repository
         private readonly DesafioManipulaeContext _context;
         private List<VideoList> videos;
         private WebClient webClient;
-        private string API_KEY = "AIzaSyAu7lH35RqFq0uiI6KVzRrZXzH7aKy4tkk";
+        private string API_KEY = YOUR KEY;
         public DesafioManipulaeRepository(DesafioManipulaeContext context)
         {
             _context = context;
